@@ -57,6 +57,8 @@ Execute the program:
 
     ./cascade_gui
 
+Make sure to create a "./downloads" folder in the same directory as the executable as downloads are currently set to go there for this proof-of-concept copy.
+
 💡 How to Use
 ===
 The client supports two main workflows accessible via the header bar buttons:
