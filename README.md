@@ -93,7 +93,7 @@ The client supports two main workflows accessible via the header bar buttons:
 
         Begin downloading and verifying pieces.
 
-    Upon successful completion, the full file will be saved in the local ./downloads directory, and the cascade will automatically transition to "Seeding" mode.
+    Upon successful completion, the full file will be saved in the local cascade base directories ./downloads folder, and the cascade will automatically transition to "Seeding" mode.
 
 📘 Project Structure
 ===
