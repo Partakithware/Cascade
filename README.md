@@ -125,6 +125,29 @@ Feel free to fork the repository and explore improvements! Ideas for future work
 
     For example: MiniUPnP (libminiupnpc and libnatpmp)	UPnP and NAT-PMP	C (with C++ wrappers available)	The gold standard. Widely used in torrent clients like qBittorrent and Transmission.
 
+    Etc/Repeated needs below, but even more are needed than listed.
+
+    ⚠️ Areas for Improvement and Missing Features
+    
+    While the structure is solid, the PoC is missing several key features and has some minor issues that would need to be addressed in a production-ready application:
+    
+    1. Networking and Peer Management
+    
+    No Downloader Thread Management: The download_thread_func is fire-and-forget (g_thread_new). The CascadeState has a downloaderThread member, but it's never initialized or used to manage the thread (e.g., joining or detaching the thread correctly       upon completion or cancellation). This will lead to resource leaks if not fixed.
+
+    No Stop/Cancel for Downloader: There's no mechanism (like an std::atomic<bool> in MultiPeerDownloader) to stop an ongoing download. The worker threads run until tasks.empty(). The UI has no "Stop Download" button or signal to trigger this.
+
+    Basic Peer Selection: The MultiPeerDownloader::worker iterates through all peers and stops on the first successful connection. A more robust client would:
+
+        Track peer performance (speed, failure rate).
+
+        Rotate peers more intelligently.
+
+        Implement a proper distributed hash table (DHT) or tracker client to find more peers dynamically (the current peer list is static, pulled from the .cascade file).
+
+    ```
+    
+
 Mimics the style of use in P2P torrenting programs. Many of the above ideas for future work would be needed to allow users to use this outside of their local-network.
 
 Share and attempt to extend this concept into a fully usable copy I would love to see it. 
