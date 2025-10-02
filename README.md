@@ -45,7 +45,7 @@ sudo apt install libgtk-4-dev libglib2.0-dev libgmodule-2.0-dev
 # Install OpenSSL development files
 sudo apt install libssl-dev
 
-# Install the nlohmann/json dependency (or clone it into your project)
+# Install the nlohmann/json dependency (or clone it into your project) "just the hpp from release"
 # Note: If you don't use a package manager, you must include the header manually.
 # For simplicity, we assume the header is placed in a known location (e.g., nlohmann/json.hpp).
 
